@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Clase7</string>
+    <string name="titulo">Hello World</string>
+    <string name="descripcion">User preferences refer to settings and options that a user can customize based on their individual preferences.</string>
+    <string name="preferencias_de_usuario">User Preferences</string>
+</resources>

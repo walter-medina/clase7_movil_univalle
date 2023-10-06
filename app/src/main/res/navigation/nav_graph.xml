@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/recyclerFragment"
+        android:name="com.example.clase7.fragment.RecyclerFragment"
+        android:label="RecyclerFragment"
+        tools:layout="@layout/fragment_recycler"/>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.clase7.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_recyclerFragment"
+            app:destination="@id/recyclerFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_corrutinasFragment"
+            app:destination="@id/corrutinasFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_preferenciasUsuarioFragment"
+            app:destination="@id/preferenciasUsuarioFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/corrutinasFragment"
+        android:name="com.example.clase7.fragment.CronometroFragment"
+        android:label="CorrutinasFragment"
+        tools:layout="@layout/fragment_corrutinas"/>
+    <fragment
+        android:id="@+id/preferenciasUsuarioFragment"
+        android:name="com.example.clase7.fragment.PreferenciasUsuarioFragment"
+        android:label="fragment_preferencias_usuario"
+        tools:layout="@layout/fragment_preferencias_usuario" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.example.clase7.fragment.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
+</navigation>

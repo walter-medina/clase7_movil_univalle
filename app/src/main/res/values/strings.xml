@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Clase7</string>
+
+    <string name="titulo">Hola Mundo</string>
+    <string name="descripcion">Las preferencias de usuario se refieren a la configuración y las opciones que un usuario puede personalizar según sus preferencias individuales</string>
+    <string name="preferencias_de_usuario">Preferencias de Usuario</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
