@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Clase7</string>
     <string name="preferencias_de_usuario">User Preferences</string>
-    <string name="texto_ejemplo">User preferences in an Android application refer to the custom settings and options that a user can select to tailor the application to their individual needs and preferences..</string>
+    <string name="texto_ejemplo">User preferences in an Android application refer to the custom settings and options that a user can select to tailor the application to their individual needs and preferences.</string>
     <string name="bienvenido">Welcome</string>
     <string name="modo_oscuro">Dark Mode</string>
     <string name="cambiar_idioma">Change language</string>
