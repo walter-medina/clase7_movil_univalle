@@ -7,10 +7,19 @@
 
     <style name="Theme.Clase7" parent="Base.Theme.Clase7" />
 
-    <style name="modoDia">
+    <style name="title">
         <item name="android:textSize">25sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_description">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="style_boton">
+        <item name="android:textSize">16sp</item>
     </style>
 </resources>

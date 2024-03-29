@@ -25,6 +25,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.clase7.MainActivity
 import com.example.clase7.R
+import com.example.clase7.SecondActivity
 import com.example.clase7.databinding.FragmentHomeBinding
 
 @Suppress("DEPRECATION")
@@ -77,7 +78,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun solicitudPermisoCamera() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {//Verificar el nivel de api sea mayor a android 6 o marshmallow
             when {
                 //Todo:Cuando ya se ha aceptado el permiso
                 ContextCompat.checkSelfPermission(
@@ -113,27 +114,35 @@ class HomeFragment : Fragment() {
     private fun crearCanalNotificacion() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val importance = NotificationManager.IMPORTANCE_HIGH
-            val channel = NotificationChannel(idChanel, nameChanel, importance).apply {
-                lightColor = Color.RED
-                enableLights(true)
-            }
+            val channel = NotificationChannel(idChanel, nameChanel, importance)
             val notificationManager =
                 requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
     }
 
-
     @SuppressLint("MissingPermission")
     private fun crearNotificacion() {
+        // Crear un canal de notificación (solo necesario para Android Oreo y superior)
         crearCanalNotificacion()
 
-        val notification = NotificationCompat.Builder(requireContext(), idChanel)
-            .setSmallIcon(R.drawable.ic_notification).setContentTitle("Título Notificación")
-            .setContentText("Esto es una notificación")
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
+        (requireActivity() as MainActivity).apply {
+            //si quiero que al dar clic sobre la notificación me lleve a otra actividad:
+            val intent = Intent(this, SecondActivity::class.java)
+            val pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            // Construir la notificación
+            val notification = NotificationCompat.Builder(requireContext(), idChanel)
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentTitle("Título Notificación")
+                .setContentText("Esto es una notificación")
+                .setContentIntent(pendingIntent)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setAutoCancel(true) // Esto hace que la notificación se cierre cuando el usuario haga clic en ella
 
-        NotificationManagerCompat.from(requireContext())
-            .notify(notificacionId, notification.build())
+            // Mostrar la notificación
+            NotificationManagerCompat.from(requireContext())
+                .notify(notificacionId, notification.build())
+        }
+
     }
 }
