@@ -2,9 +2,14 @@
 <resources>
     <string name="app_name">Clase7</string>
 
-    <string name="titulo">Hola Mundo</string>
-    <string name="descripcion">Las preferencias de usuario se refieren a la configuración y las opciones que un usuario puede personalizar según sus preferencias individuales</string>
     <string name="preferencias_de_usuario">Preferencias de Usuario</string>
+    <string name="texto_ejemplo">Las preferencias de usuario en una aplicación Android se refieren a las configuraciones y opciones personalizadas que un usuario puede seleccionar para adaptar la aplicación según sus necesidades y preferencias individuales.</string>
+    <string name="inicio">Inicio</string>
+    <string name="preferencias_usuario">Preferencias de Usuario</string>
+    <string name="modo_oscuro">Modo Oscuro</string>
+    <string name="cambiar_idioma">Cambiar idioma</string>
+    <string name="permisos_camara">Permisos de Cámara</string>
+    <string name="notificaciones">Notificaciones</string>
     <!-- TODO: Remove or change this placeholder text -->
 
 </resources>
