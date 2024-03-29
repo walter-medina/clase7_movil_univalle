@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Clase7</string>
-    <string name="titulo">Hello World</string>
-    <string name="descripcion">User preferences refer to settings and options that a user can customize based on their individual preferences.</string>
     <string name="preferencias_de_usuario">User Preferences</string>
+    <string name="texto_ejemplo">User preferences in an Android application refer to the custom settings and options that a user can select to tailor the application to their individual needs and preferences..</string>
+    <string name="bienvenido">Welcome</string>
+    <string name="modo_oscuro">Dark Mode</string>
+    <string name="cambiar_idioma">Change language</string>
+    <string name="permisos_camara">Camera Permissions</string>
+    <string name="notificaciones">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
 </resources>

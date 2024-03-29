@@ -30,35 +30,30 @@ import com.example.clase7.databinding.FragmentHomeBinding
 @Suppress("DEPRECATION")
 class HomeFragment : Fragment() {
 
-    private val requestPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()){ isGranted->
-            if(isGranted){
-                abrirCamara()
-            }else{
-                Toast.makeText(context,"Necesitas aceptar los Permisos",Toast.LENGTH_SHORT).show()
-
-            }
-        }
-
     private lateinit var binding: FragmentHomeBinding
     private val idChanel = "idChanel"
     private val nameChanel = "nameChanel"
     private val notificacionId = 0
 
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                abrirCamara()
+            } else {
+                Toast.makeText(context, "Necesitas aceptar los Permisos", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater)
         binding.lifecycleOwner = this
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recycler()
-        preferenciasUsuario()
         permisos()
         lanzarNotificacion()
     }
@@ -66,13 +61,6 @@ class HomeFragment : Fragment() {
     private fun recycler() {
         binding.btnFragmentRecycler.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_recyclerFragment)
-        }
-
-    }
-
-    private fun preferenciasUsuario() {
-        binding.btnPreferencias.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_preferenciasUsuarioFragment)
         }
     }
 
@@ -86,35 +74,32 @@ class HomeFragment : Fragment() {
     private fun abrirCamara() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivityForResult(intent, 0)
-
     }
 
-
-    private fun solicitudPermisoCamera(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            when{
+    private fun solicitudPermisoCamera() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            when {
                 //Todo:Cuando ya se ha aceptado el permiso
-                ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.CAMERA
-                )== PackageManager.PERMISSION_GRANTED ->{
+                ContextCompat.checkSelfPermission(
+                    requireContext(), android.Manifest.permission.CAMERA
+                ) == PackageManager.PERMISSION_GRANTED -> {
                     abrirCamara()
                 }
 
                 //Todo: Cuando se pide el permiso y se rechaza
-                shouldShowRequestPermissionRationale(android.Manifest.permission.CAMERA) ->{
-                    AlertDialog.Builder(context)
-                        .setTitle("Permisos de Cámara")
-                        .setMessage("Acepta los permisos")
-                        .setPositiveButton("SI"){_,_ ->
+                shouldShowRequestPermissionRationale(android.Manifest.permission.CAMERA) -> {
+                    AlertDialog.Builder(context).setTitle("Permisos de Cámara")
+                        .setMessage("Acepta los permisos").setPositiveButton("SI") { _, _ ->
                             requestPermissionLauncher.launch(android.Manifest.permission.CAMERA)
-                        }
-                        .setNegativeButton("No"){ _, _ -> }.show()
+                        }.setNegativeButton("No") { _, _ -> }.show()
                 }
-                else ->{
+
+                else -> {
                     //todo: cuando se entra a la camara por primera vez
                     requestPermissionLauncher.launch(android.Manifest.permission.CAMERA)
                 }
             }
-        }else{
+        } else {
             abrirCamara()
         }
     }
@@ -143,10 +128,8 @@ class HomeFragment : Fragment() {
     private fun crearNotificacion() {
         crearCanalNotificacion()
 
-
         val notification = NotificationCompat.Builder(requireContext(), idChanel)
-            .setSmallIcon(R.drawable.ic_notification)
-            .setContentTitle("Título Notificación")
+            .setSmallIcon(R.drawable.ic_notification).setContentTitle("Título Notificación")
             .setContentText("Esto es una notificación")
             .setPriority(NotificationCompat.PRIORITY_HIGH)
 
