@@ -143,6 +143,5 @@ class HomeFragment : Fragment() {
             NotificationManagerCompat.from(requireContext())
                 .notify(notificacionId, notification.build())
         }
-
     }
 }
